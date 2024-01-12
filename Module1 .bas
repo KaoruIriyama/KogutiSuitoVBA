@@ -17,7 +17,7 @@ Dim ShtName As String
     Set Data = Sheets("小口現金出納帳")
     Set Genshi = Sheets("原紙")
 
-    '「得意先一覧」 最終行
+    '「勘定科目」 最終行
     List_Cnt = Kanjoukamoku_List.Cells(Rows.Count, 1).End(xlUp).Row
 
     '「データ」 最終行
@@ -25,7 +25,7 @@ Dim ShtName As String
 
     Application.ScreenUpdating = False
 
-        '「得意先一覧」をもとに新規シート作成
+        '「勘定科目リスト」をもとに新規シート作成
         For i = 2 To List_Cnt
             Genshi.Copy after:=Worksheets(Worksheets.Count)
             ActiveSheet.Name = Kanjoukamoku_List.Cells(i, 1)
@@ -45,7 +45,7 @@ Dim ShtName As String
             '「データ」 2～最終行までループ
             For J = 6 To LastRow
 
-                '「データ」 に 「得意先一覧」 と同じ名称があったら
+                '「データ」 に 「勘定科目リスト」 と同じ名称があったら
                 If Kanjoukamoku_List.Cells(i, 1) = Data.Cells(J, 3) Then
 
                     '「データ」  A～D列の値を、該当シートに貼り付け
